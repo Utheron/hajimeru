@@ -72,7 +72,22 @@ Same as LAMP but delivred with a WordPress image
 | Status | Seems to work fine :heavy_check_mark: |
 
 # SYMFONY 
-With **Composer** installed by command line from the Dockerfile. This one is tricky (for me) because I had to create and add a user. Can't wrap my head around Linux/Docker permissions yet.
+With **Composer** installed by command line from the Dockerfile. This one was tricky (for me) because I had to assign a user to the www-data group. Can't wrap my head around Linux/Docker permissions yet.
+
+```
+docker exec -it CONTAINER_HSF-php bash
+```
+Access your Docker container bash by typing this command line and replace CONTAINER with the container name
+
+```
+composer create-project WHATEVER YOU WANT
+```
+Use Composer to create your Symfony project
+
+```
+php bin/console server:run 0.0.0.0:8000
+```
+Inside your Symfony project folder, run the Symfony server on all interfaces "0.0.0.0". By default, the listening port is 8000.
 
 | Status | Not fully working :no_entry_sign: |
 

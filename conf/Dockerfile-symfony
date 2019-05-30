@@ -2,7 +2,7 @@ FROM php:7.2-apache
 
 EXPOSE 3000 3001
 
-RUN useradd -u 1000 -g 0 qwb
+RUN usermod -u 1000 www-data
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 

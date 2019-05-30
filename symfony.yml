@@ -8,6 +8,7 @@ services:
       dockerfile: ./conf/Dockerfile-symfony
     ports:
       - 80:80
+      - 8000:8000
     volumes:
       - ./www:/var/www
       - ./conf/httpd-symfony.conf:/etc/apache2/sites-available/000-default.conf
