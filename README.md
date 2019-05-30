@@ -8,7 +8,7 @@ This is a collection of Docker stacks that I mainly use for personal projects. A
 ```
 CONTAINER_NAME=
 ```
-- This will duplicate through all the containers, easiest way to prevent name conflict and manage your containers
+This will duplicate through all the containers, easiest way to prevent name conflict and manage your containers
 
 ```
 SERVER_PORT=
