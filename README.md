@@ -89,7 +89,7 @@ php bin/console server:run 0.0.0.0:8000
 ```
 Inside your Symfony project folder, run the Symfony server on all interfaces "0.0.0.0". By default, the listening port is 8000.
 
-| Status | Not fully working :no_entry_sign: |
+| Status | Seems to work fine :heavy_check_mark: |
 
 # LEMP
 Still under development as I'm new to NGINX.
