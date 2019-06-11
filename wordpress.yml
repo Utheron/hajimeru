@@ -7,7 +7,7 @@ services:
       context: ./conf
       dockerfile: Dockerfile-wordpress
     ports:
-      - 80:80
+      - ${SERVER_PORT}:80
     volumes:
       - ./conf/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
@@ -24,7 +24,7 @@ services:
     container_name: ${CONTAINER_NAME}_HWP-sql
     image: mysql:5.7
     ports:
-      - 3306:3306
+      - ${DB_PORT}:3306
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
