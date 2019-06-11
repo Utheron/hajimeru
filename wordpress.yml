@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile-wordpress
     ports:
       - ${SERVER_PORT}:80
+      - ${BSYNC_PORT}:3000
     volumes:
       - ./conf/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
