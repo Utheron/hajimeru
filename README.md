@@ -14,8 +14,13 @@ This will duplicate through all the containers, easiest way to prevent name conf
 SERVER_PORT=
 ```
 From which port you want to acces the "web" container. Usually Port 80 if not already used.
+```
+BSYNC_PORT=3000
+```
+The default Browsersync port for auto-reloading.
 
 ```
+DB_PORT=3306
 DB_ROOT_PWD=
 DB_HOST=mysql
 DB_NAME=
