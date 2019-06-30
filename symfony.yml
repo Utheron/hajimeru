@@ -8,8 +8,8 @@ services:
       dockerfile: ./conf/Dockerfile-symfony
     ports:
       - ${SERVER_PORT}:80
-      - 8000:8000
       - ${BSYNC_PORT}:3000
+      - 8000:8000
     volumes:
       - ./www:/var/www
       - ./conf/httpd-symfony.conf:/etc/apache2/sites-available/000-default.conf
@@ -25,6 +25,7 @@ services:
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
+      MYSQL_HOST: ${DB_HOST}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
