@@ -20,4 +20,4 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && npm install -g npm \
     && npm install -g gulp-cli
 
-RUN composer require orm-fixtures fzaninotto/faker --dev
+RUN composer require orm-fixtures --dev fzaninotto/faker --dev
