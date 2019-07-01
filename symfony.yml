@@ -15,6 +15,8 @@ services:
       - ./conf/httpd-symfony.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
     working_dir: /var/www
+    depends_on:
+      - mysql
     restart: unless-stopped
 
   mysql:
