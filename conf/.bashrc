@@ -19,6 +19,7 @@
 
 # Symfony Console
 alias sf='php bin/console'
+alias sfrun='php bin/console server:run'
 alias sfdev='php bin/console --env=dev'
 alias sfprod='php bin/console --env=prod'
 
