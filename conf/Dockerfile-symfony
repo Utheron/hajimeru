@@ -7,9 +7,10 @@ RUN usermod -u 1000 www-data
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY ./conf/.bashrc /root
 
-RUN apt-get update && apt-get install -y --fix-missing apt-utils gnupg git zlib1g-dev libzip-dev unzip wget vim
+RUN apt-get update && apt-get install -y --fix-missing apt-utils gnupg git zlib1g-dev libzip-dev libicu-dev g++ unzip wget vim
 
-RUN docker-php-ext-install pdo_mysql zip
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install pdo_mysql zip intl
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
