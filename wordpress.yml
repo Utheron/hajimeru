@@ -2,51 +2,45 @@ version: '3'
 services:
 
   wordpress:
-    container_name: ${CONTAINER_NAME}_HWP-wp
+    container_name: ${CONTAINER_NAME}__HWP-php
     build:
-      context: ./conf
-      dockerfile: Dockerfile-wordpress
+      context: ./conf/Dockerfile
+      dockerfile: wordpress
     ports:
       - ${SERVER_PORT}:80
       - ${BSYNC_PORT}:3000
+      - 8000:8000
     volumes:
+      - ./www:/var/www/html
       - ./conf/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
-      - ./www:/var/www/html
     working_dir: /var/www/html
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_DB_USER: ${DB_USER}
-      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_DB_PASSWORD: ${DB_ROOT_PWD}
     restart: unless-stopped
 
-  mysql:
-    container_name: ${CONTAINER_NAME}_HWP-sql
+  db:
+    container_name: ${CONTAINER_NAME}__HWP-db
     image: mysql:5.7
     ports:
-      - ${DB_PORT}:3306
+      - ${DB_PORT}:80
     volumes:
       - ./mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PWD}
       MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
     restart: unless-stopped
 
   phpmyadmin:
-    container_name: ${CONTAINER_NAME}_HWP-pma
+    container_name: ${CONTAINER_NAME}__HWP-pma
     image: phpmyadmin/phpmyadmin:4.7
     ports:
       - ${PMA_PORT}:80
     environment:
       PMA_HOST: ${DB_HOST}
-    restart: unless-stopped
-
-  maildev:
-    container_name: ${CONTAINER_NAME}_HWP-mail
-    image: djfarrelly/maildev
-    ports:
-      - ${MAILDEV_PORT}:80
+      PMA_USER: ${DB_USER}
+      PMA_PASSWORD: ${DB_ROOT_PWD}
     restart: unless-stopped

@@ -17,11 +17,16 @@
 # alias cp='cp -i'
 # alias mv='mv -i'
 
-# Symfony Console
-alias sf='php bin/console'
-alias sfrun='php bin/console server:run'
-alias sfdev='php bin/console --env=dev'
-alias sfprod='php bin/console --env=prod'
+# php bin/console
+# alias sf='php bin/console'
+# alias sfrun='php bin/console server:run'
+# alias sfdev='php bin/console --env=dev'
+# alias sfprod='php bin/console --env=prod'
+
+# Symfony CLI
+alias sf='symfony'
+alias sfstart='symfony server:start'
+alias sfnew='symfony new'
 
 # Symfony Helper
 alias sf:mm='php bin/console make:migration'

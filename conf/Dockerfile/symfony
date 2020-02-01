@@ -2,20 +2,25 @@ FROM php:7.2-apache
 
 EXPOSE 3000 3001
 
-RUN usermod -u 1000 www-data
-
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY ./conf/.bashrc /root
+COPY .bashrc /root
 
 RUN apt-get update && apt-get install -y --fix-missing apt-utils gnupg git zlib1g-dev libzip-dev libicu-dev g++ unzip wget vim
 
-RUN docker-php-ext-install pdo_mysql zip intl
 RUN pecl install xdebug
+RUN docker-php-ext-install pdo_mysql zip intl mysqli
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
-RUN chown -R www-data:www-data /var/www
+
+RUN usermod -u 1000 www-data
+
+RUN wget https://get.symfony.com/cli/installer -O - | bash \
+    && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g npm \
     && npm install -g gulp-cli
+
+RUN apt-get autoremove -y
+RUN chown -R www-data:www-data /var/www
