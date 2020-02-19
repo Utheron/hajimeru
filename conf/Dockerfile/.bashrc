@@ -25,10 +25,10 @@
 
 # Symfony CLI
 alias sf='symfony'
-alias sfstart='symfony server:start'
-alias sfnew='symfony new'
+alias sf:start='symfony server:start'
+alias sf:new='symfony new'
 
-# Symfony Helper
+# Symfony Helpers
 alias sf:mm='php bin/console make:migration'
 alias sf:mc='php bin/console make:controller'
 alias sf:me='php bin/console make:entity'
@@ -42,3 +42,12 @@ alias sf:dsd='php bin/console doctrine:schema:update'
 alias sf:dmd='php bin/console doctrine:migrations:diff'
 alias sf:dmm='php bin/console doctrine:migrations:migrate'
 alias sf:dfxl='php bin/console doctrine:fixtures:load'
+
+# Laravel Helpers
+alias lr:new='composer create-project laravel/laravel --prefer-dist'
+alias lr:serve='php artisan serve'
+alias lr:mml='php artisan make:model'
+alias lr:dbs='php artisan db:seed'
+alias lr:mmg='php artisan make:migration'
+alias lr:mg='php artisan migrate'
+alias lr:mgr='php artisan migrate:rollback'
