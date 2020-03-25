@@ -44,6 +44,7 @@ alias sf:dmm='php bin/console doctrine:migrations:migrate'
 alias sf:dfxl='php bin/console doctrine:fixtures:load'
 
 # Laravel Helpers
+alias lr='php artisan'
 alias lr:new='composer create-project laravel/laravel --prefer-dist'
 alias lr:serve='php artisan serve'
 alias lr:mml='php artisan make:model'
