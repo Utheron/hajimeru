@@ -7,13 +7,26 @@ COPY .bashrc /root
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
-RUN apt-get update && apt-get install -y --fix-missing apt-utils gnupg git zlib1g-dev libzip-dev libicu-dev g++ unzip wget vim
+RUN apt-get update && apt-get install -y \
+    apt-utils apt-transport-https \
+    gnupg git zip unzip wget vim patch g++ \
+    zlib1g-dev libpng-dev libzip-dev libfreetype6-dev \
+    libjpeg62-turbo-dev libicu-dev libmcrypt-dev libssl-dev \
+    libwebp-dev libxpm-dev libfreetype6-dev libxml2-dev
+
+RUN docker-php-ext-configure gd \
+    --with-gd \
+    --with-webp-dir \
+    --with-jpeg-dir \
+    --with-png-dir \
+    --with-zlib-dir \
+    --with-xpm-dir \
+    --with-freetype-dir
 
 RUN pecl install xdebug
-RUN docker-php-ext-install pdo_mysql zip intl mysqli
+RUN docker-php-ext-install -j$(nproc) iconv zip pdo pdo_mysql gd bcmath dom
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
-
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
