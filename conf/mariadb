@@ -1,0 +1,4 @@
+FROM mariadb
+
+RUN usermod -u 1000 www-data
+RUN chown -R www-data:www-data /var/lib/mysql
