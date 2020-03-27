@@ -16,7 +16,7 @@ services:
   php:
     container_name: ${CONTAINER_NAME}__HLE-php
     build:
-      context: ./conf/Dockerfile
+      context: ./conf
       dockerfile: lemp
     ports:
       - ${SERVER_PORT}:80

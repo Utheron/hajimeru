@@ -4,7 +4,7 @@ services:
   php:
     container_name: ${CONTAINER_NAME}__HSF-php
     build:
-      context: ./conf/Dockerfile
+      context: ./conf
       dockerfile: symfony
     ports:
       - ${SERVER_PORT}:80

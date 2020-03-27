@@ -4,7 +4,7 @@ services:
   wordpress:
     container_name: ${CONTAINER_NAME}__HWP-php
     build:
-      context: ./conf/Dockerfile
+      context: ./conf
       dockerfile: wordpress
     ports:
       - ${SERVER_PORT}:80
