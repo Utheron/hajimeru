@@ -24,15 +24,14 @@ RUN docker-php-ext-configure gd \
     --with-freetype-dir
 
 RUN pecl install xdebug
-RUN docker-php-ext-install -j$(nproc) iconv zip pdo pdo_mysql gd bcmath dom
+RUN docker-php-ext-install -j$(nproc) iconv zip pdo pdo_mysql gd bcmath dom exif
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs \
-    && npm install -g npm \
-    && npm install -g gulp-cli
-
+    && npm install -g npm
+    
 RUN chown -R www-data:www-data /var/www
 
 RUN apt-get autoremove -y
