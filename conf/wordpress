@@ -1,20 +1,20 @@
-FROM wordpress:5-php7.1-apache
+FROM wordpress:5.5-php7.2-apache
 
-EXPOSE 3000 3001
+EXPOSE 3000
 
-RUN apt-get update && apt-get install -y --fix-missing apt-utils gnupg git zlib1g-dev libzip-dev unzip wget vim
+RUN apt-get update && apt-get install -y \
+    vim 
 
-RUN pecl install xdebug
-RUN docker-php-ext-install pdo_mysql zip mysqli
-RUN docker-php-ext-enable xdebug
-RUN a2enmod rewrite
+RUN yes | pecl install xdebug
 
-RUN usermod -u 1000 www-data
-
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
     && apt-get install -y nodejs \
     && npm install -g npm \
     && npm install -g gulp-cli
 
-RUN apt-get autoremove -y
+RUN docker-php-ext-enable xdebug
+
+RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 RUN chown -R www-data:www-data /var/www
+
+RUN apt-get autoremove -y
