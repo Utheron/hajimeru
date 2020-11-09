@@ -14,12 +14,14 @@ services:
       - ./www:/var/www/html
       - ./conf/httpd.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
     working_dir: /var/www/html
     environment:
       WORDPRESS_DB_HOST: ${DB_HOST}
       WORDPRESS_DB_NAME: ${DB_NAME}
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_ROOT_PWD}
+      WORDPRESS_DEBUG: 1
     restart: unless-stopped
 
   db:
