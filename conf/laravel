@@ -1,14 +1,14 @@
-FROM php:7.2-apache
 
-EXPOSE 3000 3001
+FROM php:7.2-apache-stretch
+
+SHELL ["/bin/bash", "--login", "-c"]
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-COPY .bashrc /root
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
 RUN apt-get update && apt-get install -y \
-    apt-utils apt-transport-https \
+    apt-utils apt-transport-https zsh \
     gnupg git zip unzip wget vim patch g++ \
     zlib1g-dev libpng-dev libzip-dev libfreetype6-dev \
     libjpeg62-turbo-dev libicu-dev libmcrypt-dev libssl-dev \
@@ -28,10 +28,16 @@ RUN docker-php-ext-install -j$(nproc) iconv zip pdo pdo_mysql gd bcmath dom exif
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
 
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install -g npm
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
     
 RUN chown -R www-data:www-data /var/www
-
 RUN apt-get autoremove -y
+RUN nvm install --lts
+RUN nvm alias default lts/*
+RUN chsh -s $(which zsh)
+
+COPY .zshrc /root
