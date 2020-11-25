@@ -98,7 +98,6 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vi ~/.zshrc"
 alias ohmyzsh="vi ~/.oh-my-zsh"
 
-# Docker
 # Laravel Helpers
 alias lr='php artisan'
 alias lr:new='composer create-project laravel/laravel --prefer-dist'
