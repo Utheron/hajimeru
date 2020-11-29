@@ -30,12 +30,12 @@ RUN docker-php-ext-install -j$(nproc) iconv zip pdo pdo_mysql gd bcmath dom exif
 RUN docker-php-ext-enable xdebug
 RUN a2enmod rewrite
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" 
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 RUN wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
-    
+
 RUN chown -R www-data:www-data /var/www
 RUN apt-get autoremove -y
 RUN nvm install --lts
