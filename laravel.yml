@@ -12,6 +12,9 @@ services:
       - ./www:/var/www/html
       - ./conf/httpd-laravel.conf:/etc/apache2/sites-available/000-default.conf
       - ./conf/php.ini:/usr/local/etc/php/php.ini
+      - ./conf/.laravel.bashrc:/root/.bashrc
+      - ./conf/.laravel.zshrc:/root/.zshrc
+      - ./conf/af-magic.zsh-theme:/root/.oh-my-zsh/themes/af-magic.zsh-theme
     working_dir: /var/www/html
     restart: unless-stopped
 

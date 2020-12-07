@@ -3,7 +3,7 @@ Hajimeru means "to begin" and it's kind of what we're going for with this soluti
 
 This is a collection of Docker stacks that I mainly use for personal projects. Available "as is", those stacks were not fully tested. I have yet to face any major problem that I can't solve myself AKA this is not production ready. The main purpose is to gain some knowledge about Docker and how to set up a working environment.
 
-# ONE ENV FILE TO RULE THEM ALL
+# ONE .ENV FILE TO RULE THEM ALL
 **MANDATORY** : Edit the **.env** file as you want and according to your environment.
 ```
 CONTAINER_NAME=
@@ -21,23 +21,19 @@ The default Browsersync port for auto-reloading.
 
 ```
 DB_PORT=3306
-DB_ROOT_PWD=
-DB_HOST=mysql
-DB_NAME=
-DB_USER=
-DB_PASSWORD=
+DB_USER=root
+DB_ROOT_PWD=root
+DB_NAME=hajimeru_db
+DB_HOST=db
+BSYNC_PORT=3000
+IONIC_PORT=8100
 ```
 The usual MySQL logins with the **DB_HOST** which must be the SAME as the service name specified in the YML file.
 
 ```
-PMA_PORT=
+PMA_PORT=8080
 ```
-From which port you want to acces PhpMyAdmin
-
-```
-MAILDEV_PORT=
-```
-From which port you want to access MailDev
+From which port you want to acces PhpMyAdmin. Usually Port 8080.
 
 # COMMON
 - PHP
@@ -45,10 +41,9 @@ From which port you want to access MailDev
 - Vim
 - XDebug
 - NodeJs
-- Gulp CLI
 - PhpMyAdmin
-- MailDev
 - Document root /var/www/html
+- Oh-My-Zsh
 
 # BUILD YOUR CONTAINERS
 ```
@@ -64,7 +59,7 @@ If you have edited some YML/Dockerfile files, you'll probably need to rebuild th
 - HLA = Hajimeru LAMP
 - HWP = Hajimeru WordPress
 - HSF = Hajimeru Symfony
-- HLE = Hajimeru LEMP
+- HLR = Hajimeru Laravel
 
 # LAMP
 Your traditionnal stack: Linux, Apache, MySQL, PHP
@@ -96,10 +91,10 @@ Inside your Symfony project folder, run the Symfony server on all interfaces "0.
 
 | Status | Seems to work fine :heavy_check_mark: |
 
-# LEMP
-Still under development as I'm new to NGINX.
-
-| Status | Not working :x: |
+# LARAVEL
+| Status | Seems to work fine :heavy_check_mark: |
+# IONIC
+| Status | Doesn't know yet |
 
 # CUSTOMIZATION
 The defaults versions used in the YML/Dockerfile files can be change easily. Can't guarantee some unwanted side-effects though. You'll have to test it out by yourself ! Happy coding :)
