@@ -23,32 +23,16 @@
 # alias sfdev='php bin/console --env=dev'
 # alias sfprod='php bin/console --env=prod'
 
-# Symfony CLI
-alias sf='symfony'
-alias sf:start='symfony server:start'
-alias sf:new='symfony new'
-
-# Symfony Helpers
-alias sf:mm='php bin/console make:migration'
-alias sf:mc='php bin/console make:controller'
-alias sf:me='php bin/console make:entity'
-alias sf:mf='php bin/console make:form'
-alias sf:mfx='php bin/console make:fixtures'
-alias sf:ma='php bin/console make:auth'
-alias sf:cc='php bin/console cache:clear'
-alias sf:gb='php bin/console generate:bundle'
-alias sf:rd='php bin/console router:debug'
-alias sf:dsd='php bin/console doctrine:schema:update'
-alias sf:dmd='php bin/console doctrine:migrations:diff'
-alias sf:dmm='php bin/console doctrine:migrations:migrate'
-alias sf:dfxl='php bin/console doctrine:fixtures:load'
-
 # Laravel Helpers
 alias lr='php artisan'
 alias lr:new='composer create-project laravel/laravel --prefer-dist'
-alias lr:serve='php artisan serve'
+alias lr:route='php artisan route:list'
 alias lr:mml='php artisan make:model'
+alias lr:mc='php artisan make:controller'
 alias lr:dbs='php artisan db:seed'
 alias lr:mmg='php artisan make:migration'
 alias lr:mg='php artisan migrate'
 alias lr:mgr='php artisan migrate:rollback'
+alias lr:mgfs='php artisan migrate:fresh --seed'
+
+alias c:dump="composer dump-autoload"

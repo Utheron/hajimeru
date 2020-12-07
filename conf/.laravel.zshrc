@@ -64,6 +64,7 @@ ZSH_THEME="af-magic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  nvm
   zsh-autosuggestions
 )
 
@@ -101,8 +102,13 @@ alias ohmyzsh="vi ~/.oh-my-zsh"
 # Laravel Helpers
 alias lr='php artisan'
 alias lr:new='composer create-project laravel/laravel --prefer-dist'
+alias lr:route='php artisan route:list'
 alias lr:mml='php artisan make:model'
+alias lr:mc='php artisan make:controller'
 alias lr:dbs='php artisan db:seed'
 alias lr:mmg='php artisan make:migration'
 alias lr:mg='php artisan migrate'
 alias lr:mgr='php artisan migrate:rollback'
+alias lr:mgfs='php artisan migrate:fresh --seed'
+
+alias c:dump="composer dump-autoload"
