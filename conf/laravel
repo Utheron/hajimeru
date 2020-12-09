@@ -1,5 +1,7 @@
 FROM php:7.2-apache-stretch
 
+EXPOSE 3000 3001 8100
+
 SHELL ["/bin/bash", "--login", "-c"]
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
