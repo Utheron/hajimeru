@@ -4,7 +4,7 @@ EXPOSE 3000 3001 8100
 
 SHELL ["/bin/bash", "--login", "-c"]
 
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data
 
